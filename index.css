@@ -1,22 +1,37 @@
 body {
     background-color: #F3F0DF;
     font-family: Arial, Helvetica, sans-serif;
+    padding-top:1px;
 }
 
 header {
     color: black;
     text-align: center;
-    padding: 2px;
+    padding: 10px;
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    z-index: 999;
+}
+
+main {
+    padding-top:80px ;
 }
 
 .header-contenedor {
     position: relative;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 40vh;
+    height: 10vh;
     overflow: hidden;
     text-align: center;
     color: rgb(25, 24, 24);
-    width: 100%;
     background-position: center;
     background-size:cover;
 }
@@ -26,7 +41,15 @@ header {
     height: 100%;
     object-fit: cover;
     display:block;
-    object-position: center 40%;
+    object-position: center 50%;
+}
+
+.carito_imagen {
+    width: 30px;
+    padding: -20px;
+    text-align: center;
+    position: center;
+
 }
 
 .texto_encima {
@@ -35,11 +58,10 @@ header {
     left: 10%;
     transform: translate(-50%, -50%);
     font-family:'Playfair Display', serif;
-    font-size: 4.5em;
+    font-size:3.2em;
     text-shadow: 1px 1px 2px rgba(0, 0, 0,0.4);
     z-index:2;
 }
-
 
 .header-contenedor::after {
     content: "";
@@ -57,8 +79,6 @@ nav {
     text-align: center;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    text-decoration-color: blueviolet;
-
 
 }
 nav a {
@@ -67,15 +87,10 @@ nav a {
     text-decoration: none;
 }
 
-footer {
-    background-color: black;
-    color: aliceblue;
-    text-align: center;
-    padding: 15px;
+section { 
+    padding: 20px;
+    scroll-margin-top: 140px;
 }
-
-section { padding: 20px;}
-
 
 .seccion {
     display: flex;
@@ -102,4 +117,70 @@ section { padding: 20px;}
     width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+form {
+    margin: 0 auto;
+    width: 400px;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+form li + li {
+    margin-top: 1em;
+}
+
+label {
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}
+
+input,
+textarea {
+    font: 1em sans-serif;
+    width: 300px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+}
+
+input:focus,
+textarea.focus {
+    border-color: #000;
+}
+
+textarea {
+    vertical-align: top;
+    height: 5em;
+}
+
+.button {
+    padding-left: 90px;
+}
+
+button {
+    margin-left: 0.5em;
+}
+
+
+.contacto {
+    font-size: 2em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+
+footer {
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    padding: 15px;
 }

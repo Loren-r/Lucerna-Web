@@ -7,19 +7,23 @@
     <link rel="stylesheet" href="index.css">
     
 <body>
+    <div class="top-bar">
     <header class="header-contenedor">
         <img src="Recursos/foto.jpg" alt="foto_encabezado" class="header_imagen">
         <div class="texto_encima">Lucerna</div>
     </header>
+    
     <nav>
         <a href="#encontrar">¿Qué encontrarás en esta página?</a>
         <a href="#somos">¿Quienes somos?</a>
         <a href="#catalogo">Catálogo</a>
         <a href="#como_comprar">¿Cómo comprar?</a>
         <a href="#contacto">Contacto</a>
-        <a href="#carrito">Carrito de compras</a>
+        <a href="#carrito"><img src="Recursos/carrito.webp" alt=Carrito_de_compras class="carito_imagen"></a>
     </nav>
+    </div>
 
+    <main>
     <section id="encontrar" class="seccion">
         <div class="seccion-texto">
             <h2>¿Qué encontrarás en esta página?</h2>
@@ -36,7 +40,7 @@
 
     <section id="somos" class="seccion">
         <div class="seccion-imagen">
-            <img src="Recursos/sadsa.jpg" alt="velita 1">
+            <img src="Recursos/foto_encabezado.avif" alt="velita 1">
         </div>
         <div class="seccion-texto">
         <h2>¿Quienes somos?</h2>
@@ -61,12 +65,28 @@
             Perspiciatis tempora excepturi eaque dolorum!</p>
     </section>
 
-    <section id="contacto" class="seccion">
-        <h2>Contacto</h2>
-        <form>
-            <input type="text" placeholder="Tu nombre"><br><br>
-            <input type="email" placeholder="Tu correo"><br><br>
-            <button>Enviar</button>
+
+    <section id="contacto">
+        <form action="puchatodoexiste@gmail.com" method="post">
+            <h2 class="contacto">Contacto</h2>
+            <ul>
+                <li>
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="user_name" />
+                </li>
+                <li>
+                    <label for="mail">Correo:</label>
+                    <input type="email" id="mail" name="user_mail"/>
+                </li>
+                <li>
+                    <label for="msg">Mensaje:</label>
+                    <textarea id="msg" name="user_message"></textarea>
+                </li>
+                <li class="button">
+                    <button type="submit">Enviar</button>
+                </li>
+            </ul>
+
         </form>
 
     </section>
@@ -75,6 +95,6 @@
  <footer>
         <p>&copy; 2026 Lucerna</p>
     </footer>
-
+    </main>
 </body>
 </html>
