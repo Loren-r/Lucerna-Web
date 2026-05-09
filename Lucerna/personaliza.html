@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucerna web</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>  
 <body>
     <div class="top-bar">
@@ -40,9 +41,229 @@
     </script>
     
     </nav>
+
+<section id="personaliza" class="personaliza container my-5">
+  <h2 class="text-center mb-4">Personaliza tu vela</h2>
+
+  <form id="formPersonaliza" class="p-4 rounded-4 shadow-sm bg-light">
+    
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Tamaño (gramos)</label>
+        <select id="gramos" class="form-select" required>
+          <option value="" disabled selected>Selecciona...</option>
+          <option value="100" data-precio="4500">100g</option>
+          <option value="150" data-precio="6000">150g</option>
+          <option value="200" data-precio="7500">200g</option>
+        </select>
+        <small class="text-muted">*Precios de ejemplo: ajusta a tu gusto</small>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Forma</label>
+        <select id="forma" class="form-select" required>
+          <option value="" disabled selected>Selecciona...</option>
+          <option value="Postre" data-extra="800">Postre (+$800)</option>
+          <option value="Flor" data-extra="700">Flor (+$700)</option>
+          <option value="Clásica" data-extra="0">Clásica (+$0)</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Aroma</label>
+        <select id="aroma" class="form-select" required>
+          <option value="" disabled selected>Selecciona...</option>
+          <option value="Vainilla" data-extra="0">Vainilla</option>
+          <option value="Lavanda" data-extra="0">Lavanda</option>
+          <option value="Frutilla" data-extra="0">Frutilla</option>
+          <option value="Café" data-extra="500">Café premium (+$500)</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Color</label>
+        <input id="color" type="color" class="form-control form-control-color" value="#f7d6c1" title="Elige un color">
+        <small class="text-muted">Color no suma (puedes cambiarlo si quieres)</small>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Mecha</label>
+        <select id="mecha" class="form-select" required>
+          <option value="" disabled selected>Selecciona...</option>
+          <option value="Algodón" data-extra="0">Algodón (+$0)</option>
+          <option value="Madera" data-extra="600">Madera (+$600)</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Packaging</label>
+        <select id="pack" class="form-select" required>
+          <option value="" disabled selected>Selecciona...</option>
+          <option value="Sin caja" data-extra="0">Sin caja (+$0)</option>
+          <option value="Caja regalo" data-extra="900">Caja regalo (+$900)</option>
+          <option value="Caja premium" data-extra="1500">Caja premium (+$1500)</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Mensaje (opcional)</label>
+        <input id="mensaje" type="text" class="form-control" maxlength="40" placeholder="Ej: Para mamá 💛">
+        <small class="text-muted">Hasta 40 caracteres</small>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Cantidad</label>
+        <input id="cantidad" type="number" class="form-control" value="1" min="1" max="20" required>
+      </div>
+
+      <div class="col-md-8 d-flex align-items-end justify-content-between">
+        <div>
+          <div class="fw-bold">Precio estimado:</div>
+          <div id="precioEstimado" class="fs-4">$0</div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg">
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+
+  </form>
+</section>
+
+
+
     <footer>
         <p>&copy; 2026 Lucerna</p>
     </footer>
     </main>
+
+    <script>
+/* ====== TU CARRITO (ya lo tienes) ====== */
+let carrito = [];
+let total = 0;
+
+function agregarAlCarrito(nombre, precio) {
+  carrito.push({ nombre, precio });
+  total += precio;
+  mostrarCarrito();
+}
+
+function mostrarCarrito() {
+  const lista = document.getElementById("carrito");
+  const totalTexto = document.getElementById("total");
+
+  lista.innerHTML = "";
+
+  carrito.forEach((producto, index) => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      ${producto.nombre} - $${producto.precio}
+      <button onclick="eliminarProducto(${index})" style="margin-left: 10px;">
+        ❌
+      </button>
+    `;
+
+    lista.appendChild(li);
+  });
+
+  totalTexto.textContent = "Total: $" + total;
+}
+
+function eliminarProducto(index) {
+  total -= carrito[index].precio;
+  carrito.splice(index, 1);
+  mostrarCarrito();
+}
+
+/* ====== PERSONALIZADOR ====== */
+function getOptionExtra(selectId) {
+  const sel = document.getElementById(selectId);
+  const opt = sel.options[sel.selectedIndex];
+  return opt ? Number(opt.dataset.extra || 0) : 0;
+}
+
+function getBasePriceFromGrams() {
+  const sel = document.getElementById("gramos");
+  const opt = sel.options[sel.selectedIndex];
+  return opt ? Number(opt.dataset.precio || 0) : 0;
+}
+
+function formatearCLP(num) {
+  // si te da lata, puedes dejar "$" + num
+  return "$" + Number(num).toLocaleString("es-CL");
+}
+
+function calcularPrecioPersonalizado() {
+  const base = getBasePriceFromGrams();
+  const extraForma = getOptionExtra("forma");
+  const extraAroma = getOptionExtra("aroma");
+  const extraMecha = getOptionExtra("mecha");
+  const extraPack = getOptionExtra("pack");
+
+  const cantidad = Number(document.getElementById("cantidad").value || 1);
+
+  const unitario = base + extraForma + extraAroma + extraMecha + extraPack;
+  const totalCalc = unitario * cantidad;
+
+  document.getElementById("precioEstimado").textContent = formatearCLP(totalCalc);
+
+  return { unitario, totalCalc };
+}
+
+function construirDescripcionPersonalizada() {
+  const gramos = document.getElementById("gramos").value;
+  const forma = document.getElementById("forma").value;
+  const aroma = document.getElementById("aroma").value;
+  const mecha = document.getElementById("mecha").value;
+  const pack = document.getElementById("pack").value;
+  const mensaje = document.getElementById("mensaje").value.trim();
+  const cantidad = Number(document.getElementById("cantidad").value || 1);
+
+  let desc = `Vela personalizada (${gramos}g, ${forma}, aroma ${aroma}, mecha ${mecha}, ${pack})`;
+  if (mensaje) desc += ` - Mensaje: "${mensaje}"`;
+  if (cantidad > 1) desc += ` x${cantidad}`;
+
+  return desc;
+}
+
+// recalcular cuando cambie algo
+["gramos","forma","aroma","mecha","pack","cantidad"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("change", calcularPrecioPersonalizado);
+  if (el && id === "cantidad") el.addEventListener("input", calcularPrecioPersonalizado);
+});
+
+// submit: agregar al carrito
+const form = document.getElementById("formPersonaliza");
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // valida mínimos
+    if (!document.getElementById("gramos").value ||
+        !document.getElementById("forma").value ||
+        !document.getElementById("aroma").value ||
+        !document.getElementById("mecha").value ||
+        !document.getElementById("pack").value) {
+      alert("Completa las opciones antes de agregar al carrito 🕯️");
+      return;
+    }
+
+    const { totalCalc } = calcularPrecioPersonalizado();
+    const desc = construirDescripcionPersonalizada();
+
+    agregarAlCarrito(desc, totalCalc);
+
+    // opcional: resetear
+    form.reset();
+    document.getElementById("precioEstimado").textContent = "$0";
+  });
+
+  // primer cálculo por si acaso
+  calcularPrecioPersonalizado();
+}
+</script>
 </body>
 </html>

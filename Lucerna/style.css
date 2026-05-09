@@ -90,7 +90,7 @@ nav a {
 
 /* ESPACIO RESERVADO para header + nav */
 main {
-    padding-top: 260px; /* 180px header + ~80px nav */
+    padding-top: 320px; /* 180px header + ~80px nav */
      background-color: #F3F0DF;
 }
 
@@ -229,6 +229,23 @@ textarea {
     padding: 20px;
     line-height: 1.6;
 }
+
+
+.personaliza form {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(0,0,0,0.06);
+  
+}
+
+.personaliza {
+    padding: 200px;
+}
+
+#precioEstimado {
+  color: #6b4f2a; /* cafecito aesthetic */
+}
+
+
 
 
 
