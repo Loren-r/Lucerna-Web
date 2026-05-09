@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucerna web</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>  
+<body>
+    <div class="top-bar">
+    <header class="header-contenedor">
+        <img src="Recursos/foto.jpg" alt="foto_encabezado" class="header_imagen">
+        <div class="texto_encima">Lucerna</div>
+        
+    </header>
+
+    <nav>
+
+        <div onclick="toggleMenu()">☰ Menú</div> 
+
+        <div id="menu"> 
+            <a href="index.html" >Home</a>
+            <a href="quienessomos.html">¿Quienes somos?</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="comocomprar.html">¿Cómo comprar?</a>
+            <a href="contacto.html">Contáctanos</a>
+            <a href="carrito.html">
+                <img src="Recursos/carrito.webp" alt=Carrito_de_compras class="carito_imagen">
+            </a>
+        </div> 
+        
+    
+    <script>
+        function toggleMenu() {
+        let menu = document.getElementById("menu");
+        let estado = window.getComputedStyle(menu).display;
+
+        menu.style.display = (estado === "none") ? "flex" : "none";
+    }
+    </script>
+    
+    </nav>
+
+    <main>
+  
+    <section id="catalogo_postre"> 
+        
+   <div class="container">
+  <h2 class="text-center my-4">Velitas</h2>
+
+  <div class="row">
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="Recursos/Catalogo/Postres/postre1.png" class="card-img-top" alt="vela">
+        <div class="card-body text-center">
+
+          <h5 class="card-title">Vela Frutilla</h5>
+          <p class="card-text">$5.000</p>
+
+          <details>
+            <summary style="cursor:pointer; color: #0d6efd; font-weight: bold;">
+                Ver más
+            </summary>
+
+            <p style="margin-top: 10px;">
+                Aroma dulce a frutilla <br>
+                Duración: 20 horas <br>
+                Ideal para ambientar espacios
+            </p>
+
+            
+            <button class="btn btn-success" onclick="agregarAlCarrito('Vela Frutilla', 5000)">
+            Agregar al carrito
+            </button>
+
+
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="Recursos/Catalogo/Postres/postre 2.jpg" class="card-img-top" alt="vela">
+        <div class="card-body text-center">
+          <h5 class="card-title">Vela Galletas y Fruta</h5>
+          <p class="card-text">$6.000</p>
+          <a href="#" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="Recursos/Catalogo/Postres/postre 3.webp" class="card-img-top" alt="vela">
+        <div class="card-body text-center">
+          <h5 class="card-title">Vela Helado</h5>
+          <p class="card-text">$5.500</p>
+          <a href="#" class="btn btn-primary">Ver más</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+   
+</section>
+
+<section style="padding:20px;">
+  <h3>🛒 Carrito</h3>
+  <ul id="carrito"></ul>
+  <p id="total">Total: $0</p>
+
+  
+<button onclick="finalizarCompra()" class="btn btn-warning">
+  Finalizar compra
+</button>
+
+</section>
+
+<footer>
+    <p>&copy; 2026 Lucerna</p>
+</footer>
+
+
+    <footer>
+        <p>&copy; 2026 Lucerna</p>
+    </footer>
+
+    </main>
+
+    
+<script>
+let carrito = [];
+let total = 0;
+
+function agregarAlCarrito(nombre, precio) {
+  carrito.push({ nombre, precio });
+  total += precio;
+  mostrarCarrito();
+}
+
+function mostrarCarrito() {
+  const lista = document.getElementById("carrito");
+  const totalTexto = document.getElementById("total");
+
+  lista.innerHTML = "";
+
+  carrito.forEach((producto, index) => {  // 👈 AQUÍ ESTÁ LA CLAVE
+    const li = document.createElement("li");
+    
+    li.innerHTML = `
+      ${producto.nombre} - $${producto.precio}
+      <button onclick="eliminarProducto(${index})" style="margin-left: 10px;">
+        ❌
+      </button>
+    `;
+
+    lista.appendChild(li);
+  });
+
+  totalTexto.textContent = "Total: $" + total;
+}
+
+function eliminarProducto(index) {
+  total -= carrito[index].precio;
+  carrito.splice(index, 1);
+  mostrarCarrito();
+}
+
+function finalizarCompra() {
+  if (carrito.length === 0) {
+    alert("El carrito está vacío 🛒");
+    return;
+  }
+
+  alert("¡Compra realizada con éxito! 🎉");
+
+  carrito = [];
+  total = 0;
+
+  mostrarCarrito();
+}
+``
+</script>
+``  
+
+
+
+
+</body> 
+</html>

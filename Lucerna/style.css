@@ -1,0 +1,269 @@
+/* =========================
+   BASE
+========================= */
+
+body {
+    background-color: #F3F0DF;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+/* =========================
+   HEADER + NAV FIJOS
+========================= */
+
+/* Header fijo */
+.header-contenedor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    z-index: 1001;
+}
+
+.header_imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.texto_encima {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+.header-contenedor::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(243,240,223,0.5);
+    z-index: 1;
+}
+
+/* Nav fijo debajo del header */
+nav {
+    position: fixed;
+    top: 180px; /* justo debajo del header */
+    left: 0;
+    width: 100%;
+    background-color: rgba(208, 202, 172, 0.767);
+    padding: 10px 20px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+
+/* Menú desplegable */
+#menu {
+    display: none;
+    flex-direction: column;
+    padding: 10px; 
+}
+
+nav a {
+    color: rgb(53, 52, 52);
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 8px 0;
+    display: block;
+}
+
+.carito_imagen {
+    width: 30px;
+    display: inline-block;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+/* ESPACIO RESERVADO para header + nav */
+main {
+    padding-top: 260px; /* 180px header + ~80px nav */
+     background-color: #F3F0DF;
+}
+
+section, catalogo_postre {
+    padding: 20px;
+    scroll-margin-top: 260px;
+    text-align: center;
+    position: relative;
+    background-color: #F3F0DF;
+
+}
+
+.seccion {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 80px;
+}
+
+.seccion-texto {
+    flex: 1;
+}
+
+.seccion-texto h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.seccion-imagen {
+    flex: 1;
+}
+
+.seccion-imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: rgba(243,240,223,0.5); 
+    padding: 15px;
+    border-radius: 80px;
+    text-align: center;
+    color: rgb(12, 12, 12);
+    transition: transform 0.3s;
+   
+    height: auto; 
+}
+
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    border-radius: 4px;
+    object-fit: cover;
+    
+}
+
+
+
+form {
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #999;
+    margin-bottom: 15px;
+}
+
+textarea {
+    resize: none;
+    min-height: 120px;
+}
+
+/* Contacto card */
+
+.contacto-card h2 {
+    margin: 0;
+    padding: 30px;
+    background-color: #F3F0DF;
+    font-size: 24px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.contacto-card form {
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contacto-card button {
+    align-self: flex-end;
+    padding: 10px 22px;
+    background-color: #bba36b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contacto-card button:hover {
+    background-color: #a89058;
+}
+
+.comocomprar, .home , .quienessomos {
+    text-align: left;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    padding: 15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .texto_encima {
+        font-size: 2.2em;
+        left: 50%;
+    }
+
+    .seccion {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    nav {
+        padding: 8px 15px;
+    }
+
+    main {
+        padding-top: 240px;
+    }
+}

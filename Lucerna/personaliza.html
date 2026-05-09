@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucerna web</title>
+    <link rel="stylesheet" href="style.css">
+</head>  
+<body>
+    <div class="top-bar">
+    <header class="header-contenedor">
+        <img src="Recursos/foto.jpg" alt="foto_encabezado" class="header_imagen">
+        <div class="texto_encima">Lucerna</div>
+        
+    </header>
+
+    <nav>
+
+        <div onclick="toggleMenu()">☰ Menú</div> 
+
+        <div id="menu"> 
+            <a href="index.html" >Home</a>
+            <a href="quienessomos.html">¿Quienes somos?</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="comocomprar.html">¿Cómo comprar?</a>
+            <a href="contacto.html">Contáctanos</a>
+            <a href="carrito.html">
+                <img src="Recursos/carrito.webp" alt=Carrito_de_compras class="carito_imagen">
+            </a>
+        </div> 
+        
+    
+    <script>
+        function toggleMenu() {
+        let menu = document.getElementById("menu");
+        let estado = window.getComputedStyle(menu).display;
+
+        menu.style.display = (estado === "none") ? "flex" : "none";
+    }
+    </script>
+    
+    </nav>
+    <footer>
+        <p>&copy; 2026 Lucerna</p>
+    </footer>
+    </main>
+</body>
+</html>
