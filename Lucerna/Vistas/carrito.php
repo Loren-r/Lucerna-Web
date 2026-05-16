@@ -34,7 +34,7 @@
 
     <main>
  
-       <div class="container mt-4">
+       <div class="container_carrito">
 
          <h2 class="text-center">🛒 Tu carrito</h2>
 
@@ -42,9 +42,11 @@
 
         <hr>
 
-         <h3 lass="text-end">
+         <h3 class="text-end">
              Total: <span id="total">$0</span>
          </h3>
+         
+        </hr>
 
 </div>
 

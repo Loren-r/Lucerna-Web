@@ -34,7 +34,7 @@
     <main>
     <section class="contacto-card">
         <h2>Contáctanos</h2>
-        <form method="post">
+        <form method="post" action="enviar.php">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="user_name" />
                 

@@ -8,8 +8,6 @@
         menu.style.display = (estado === "none") ? "flex" : "none";
     }
     
-    
-
 
 /* lista de productos para el catalogo de postres */
 
