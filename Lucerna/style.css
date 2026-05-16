@@ -8,9 +8,7 @@ body {
     margin: 0;
 }
 
-/* =========================
-   HEADER + NAV FIJOS
-========================= */
+/* HEADER + NAV FIJOS*/
 
 /* Header fijo */
 .header-contenedor {
@@ -91,7 +89,8 @@ nav a {
 /* ESPACIO RESERVADO para header + nav */
 main {
     padding-top: 320px; /* 180px header + ~80px nav */
-     background-color: #F3F0DF;
+    background-color: #F3F0DF;
+    flex: 2;
 }
 
 section, catalogo_postre {
@@ -139,13 +138,15 @@ section, catalogo_postre {
 
 .card {
     background: rgba(243,240,223,0.5); 
-    padding: 15px;
-    border-radius: 80px;
+    padding: 2px;
+    border-radius: 200px;
     text-align: center;
     color: rgb(12, 12, 12);
     transition: transform 0.3s;
-   
-    height: auto; 
+    height: 250px; 
+    max-width: 200px;
+    margin: 100;
+
 }
 
 
@@ -156,12 +157,41 @@ section, catalogo_postre {
 
 .card img {
     width: 100%;
-    height: 300px;
+    height: 150px;
     border-radius: 4px;
     object-fit: cover;
-    
 }
 
+/*css para catálogo postres*/
+
+
+#catalogo_mostrar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px;
+}
+
+.card_producto {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  width:50%;
+}
+
+.card_producto:hover {
+    transform: scale(1.05);
+}
+
+.img_producto {
+    width:30%;
+    height: 100px;
+    border-radius: 4px;
+    object-fit: cover;
+}
 
 
 form {
@@ -194,6 +224,7 @@ textarea {
 
 /* Contacto card */
 
+
 .contacto-card h2 {
     margin: 0;
     padding: 30px;
@@ -224,11 +255,28 @@ textarea {
     background-color: #a89058;
 }
 
+.btn_agregar {
+    background-color: #bba36b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.ver_mas{
+    cursor:pointer; 
+    color:#a51d1a; 
+    font-weight:bold;
+}
+
 .comocomprar, .home , .quienessomos {
     text-align: left;
     padding: 20px;
     line-height: 1.6;
 }
+
 
 
 .personaliza form {
@@ -248,7 +296,6 @@ textarea {
 
 
 
-
 /* =========================
    FOOTER
 ========================= */
@@ -258,6 +305,7 @@ footer {
     color: aliceblue;
     text-align: center;
     padding: 15px;
+    
 }
 
 /* =========================
@@ -283,4 +331,23 @@ footer {
     main {
         padding-top: 240px;
     }
+
+    #catalogo_mostrar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
+
+    }
+
+    .card_producto {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  width:90%;
+  height: 300px;
+}
 }
